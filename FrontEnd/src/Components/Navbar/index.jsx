@@ -11,6 +11,9 @@ const Navbar = () => {
       <li>
         <Link>Product</Link>
       </li>
+      <li>
+        <Link to="/dashboard">Dashboard</Link>
+      </li>
     </>
   );
   return (
