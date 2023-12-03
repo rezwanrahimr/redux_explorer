@@ -1,26 +1,38 @@
-import { fetchFaild, fetchStart, fetchSuccess } from "../action/actionCreators";
+// src/redux/thunks/postData.js
 
-const PostData = (postData) => {
-  console.log(postData);
+import {
+  fetchFailure,
+  fetchStart,
+  fetchSuccess,
+} from "../action/actionCreators";
+
+const postData = (postData) => {
   return async (dispatch) => {
     dispatch(fetchStart());
 
     try {
-      const response = await fetch("http://localhost:5000/api/add-content", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData),
-      });
-      const data = await response.json();
-      console.log(data);
-      if (data) {
-        dispatch(fetchSuccess());
+      // Make API request
+      const response = await fetch(
+        "https://back-157bn43nw-rezwanrahimr.vercel.app/api/add-content",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to post data");
       }
+
+      const data = await response.json();
+      dispatch(fetchSuccess(data));
     } catch (error) {
-      dispatch(fetchFaild(error?.message));
+      dispatch(fetchFailure(error.message));
     }
   };
 };
 
-export default PostData;
+export default postData;

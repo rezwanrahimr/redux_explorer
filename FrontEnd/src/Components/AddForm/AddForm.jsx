@@ -1,7 +1,9 @@
+import { useDispatch } from "react-redux";
 import PostData from "../../redux/thunk/PostData";
 
 const AddForm = () => {
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const information = {
@@ -12,9 +14,11 @@ const AddForm = () => {
     console.log("post info", information);
 
     if (information) {
-      PostData(information);
+      // Use await to wait for the asynchronous operation to complete
+      await dispatch(PostData(information));
     }
   };
+
   return (
     <>
       <h1 className="text-xl">Add New Post</h1>
@@ -27,7 +31,7 @@ const AddForm = () => {
           name="title"
         />
         <br />
-        <label> Description</label>
+        <label>Description</label>
         <br />
         <textarea
           className="textarea textarea-bordered"
@@ -42,4 +46,5 @@ const AddForm = () => {
     </>
   );
 };
+
 export default AddForm;

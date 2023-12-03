@@ -12,7 +12,7 @@ export const fetchSuccess = () => {
   };
 };
 
-export const fetchFaild = (value) => {
+export const fetchFailure = (value) => {
   return {
     type: FETCH_FAIL,
     payload: value,
