@@ -6,9 +6,10 @@ export const fetchStart = () => {
   };
 };
 
-export const fetchSuccess = () => {
+export const fetchSuccess = (value) => {
   return {
     type: FETCH_SUCCESS,
+    payload: value,
   };
 };
 

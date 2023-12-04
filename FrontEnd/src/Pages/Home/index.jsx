@@ -1,7 +1,8 @@
+import LoadData from "../../Components/LoadData/LoadData";
 const Home = () => {
   return (
     <>
-      <h1>Home</h1>
+      <LoadData></LoadData>
     </>
   );
 };
