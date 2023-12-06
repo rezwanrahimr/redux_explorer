@@ -5,6 +5,9 @@ import {
   FETCH_FAIL,
   FETCH_START,
   FETCH_SUCCESS,
+  UPDATE_FAIL,
+  UPDATE_START,
+  UPDATE_SUCCESS,
 } from "./actionTypes";
 
 export const fetchStart = () => {
@@ -43,6 +46,25 @@ export const deleteSuccess = (value) => {
 export const deleteFail = (value) => {
   return {
     type: DELETE_FAIL,
+    payload: value,
+  };
+};
+
+export const updateStart = () => {
+  return {
+    type: UPDATE_START,
+  };
+};
+
+export const updateSuccess = (value) => {
+  return {
+    type: UPDATE_SUCCESS,
+    payload: value,
+  };
+};
+export const updateFail = (value) => {
+  return {
+    type: UPDATE_FAIL,
     payload: value,
   };
 };

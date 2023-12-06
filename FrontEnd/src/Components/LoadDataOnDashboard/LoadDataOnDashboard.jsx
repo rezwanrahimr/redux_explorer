@@ -1,7 +1,9 @@
 import { connect, useDispatch } from "react-redux";
 import DeleteItem from "../../redux/thunk/DeleteItem";
+import { useNavigate } from "react-router-dom";
 
 const LoadDataOnDashboard = (data) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoading } = data?.data;
   const { data: information } = data?.data?.data;
@@ -31,7 +33,14 @@ const LoadDataOnDashboard = (data) => {
                   <td>{item?.title}</td>
                   <td>{item.description}</td>
                   <td>
-                    <button className="btn btn-primary">Edit</button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() =>
+                        navigate(`/dashboard/editPost/${item._id}`)
+                      }
+                    >
+                      Edit
+                    </button>
                   </td>
                   <td>
                     <button

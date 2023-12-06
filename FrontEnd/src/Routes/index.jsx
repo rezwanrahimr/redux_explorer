@@ -4,6 +4,7 @@ import Dashboard from "../Pages/Dashboard";
 import AddForm from "../Components/AddForm/AddForm";
 import Home from "../Pages/Home";
 import LoadDataOnDashboard from "../Components/LoadDataOnDashboard/LoadDataOnDashboard";
+import EditForm from "../Components/EditForm/EditForm";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/allPost",
         element: <LoadDataOnDashboard />,
+      },
+      {
+        path: "/dashboard/editPost/:id",
+        element: <EditForm />,
       },
     ],
   },
